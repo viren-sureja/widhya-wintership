@@ -1,0 +1,73 @@
+{% block body %}
+
+<!DOCTYPE >
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Post a Review</title>
+	</head>
+
+	<body>
+		<div style="background-color: #81aef1; width: 100%; margin: 2 auto">
+			<h2 style="text-align: center; text-decoration: underline">
+				Post your Review:
+			</h2>
+
+			<form method="post" style="text-align: center">
+				<span style="display: inline-flex; margin-left: 8.75%">
+					{{ form.fname.label }}
+				</span>
+				<span style="padding: auto"> {{ form.fname(size=50)}} </span>
+				<br /><br />
+				<span style="display: inline-flex; margin-left: 6.75%">
+					{{ form.product.label }}
+				</span>
+				<span style="padding: auto"> {{ form.product(size=50)}} </span>
+				<br /><br />
+				<span
+					style="
+						display: inline-flex;
+						margin-left: 9.75%;
+						text-align: justify;
+					"
+				>
+					{{ form.review.label }}
+				</span>
+				<span style="overflow: auto; padding: auto">
+					{{ form.review(rows='5', cols='50')}}
+				</span>
+
+				<p>{{ form.submit() }}</p>
+			</form>
+		</div>
+
+		<div style="background-color: #172e50; color: #a0e2f2">
+			<h1 style="text-decoration: underline">Reviews:</h1>
+			<table>
+				{% for row in rev %}
+				<span
+					>User:
+					<span style="font-weight: 900; color: #ffbb00"
+						>{{ row[0] }}</span
+					></span
+				><br />
+				<span
+					>Product:
+					<span style="font-weight: 900; color: #ffbb00"
+						>{{ row[1] }}</span
+					></span
+				><br />
+				<span
+					>Review:
+					<span style="font-weight: 900; color: #ffbb00"
+						>{{ row[2] }}</span
+					>
+				</span>
+				<br /><br />
+				{% endfor %}
+			</table>
+		</div>
+	</body>
+</html>
+
+{% endblock %}
